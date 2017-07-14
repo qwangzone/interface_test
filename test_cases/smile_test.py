@@ -48,6 +48,7 @@ class SmileTaskTestCase(unittest.TestCase):
         self.assertEqual(create_task_res["title"], "test")
         self.assertEqual(create_task_res["desc"], "desc")
         requests.request("DELETE", url)
+
     def test_delete_task(self):
         """"删除一个任务"""
         create_task_res = self.create_task("test", "desc")
