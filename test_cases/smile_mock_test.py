@@ -5,7 +5,7 @@ import time
 from parameterized import parameterized
 class SmileTaskTestCase(unittest.TestCase):
     def setUp(self):
-        self.ip = 'http://localhost:3000/api/tasks'
+        self.ip = 'http://localhost:5000/api/tasks'
 
     def test_get_all_tasks(self):
         """获取所有任务"""
@@ -17,8 +17,8 @@ class SmileTaskTestCase(unittest.TestCase):
 
     def test_get_task(self):
         """获取单个任务的详情"""
-        create_task_res = self.create_task("test", "desc")
-        create_task_id = create_task_res["id"]
+        #create_task_res = self.create_task("test", "desc")
+        #create_task_id = create_task_res["id"]
         url = self.ip + "/" + str(create_task_id)
         response = requests.request("GET", url)
         res = response.json()
@@ -71,6 +71,6 @@ class SmileTaskTestCase(unittest.TestCase):
 if __name__ == '__main__':
     #unittest.main()
     suit = unittest.TestSuite()
-    suit.addTest(SmileTaskTestCase('test_get_all_tasks'))
+    suit.addTest(SmileTaskTestCase('test_get_task'))
     runner = unittest.TextTestRunner()
     runner.run(suit)
